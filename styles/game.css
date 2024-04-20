@@ -7,9 +7,14 @@ main{
     flex-flow: column;
 }
 
+div {
+    padding-inline-start: 1vb;
+}
+
 #setUp{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-block-end: 1vb;
 }
 
 #setUp label {
@@ -21,7 +26,21 @@ main{
 #setUp input, #setUp button {
     grid-row: 2;
 }
-
+#player, #bot, #finalResults {
+    inline-size: 100%;
+    background-color: var(--yellow);
+    border-radius: var(--mainBorderRadius);
+}
+#finalResults button {
+    background-color: var(--black);
+    color: var(--blue);
+    margin-block-end: 1vb;
+}
+#buttonGroup{
+    background-color: var(--black);
+    inline-size: 100%;
+    text-align: center;
+}
 input,
 button {
     background-color: var(--yellow);
