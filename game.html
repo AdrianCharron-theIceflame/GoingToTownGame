@@ -5,44 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/site.css">
+    <link rel="stylesheet" href="./styles/game.css">
     <title>Going to Town Game</title>
 </head>
 
 <body>
-    <h1>Going to Town</h1>
-    <section>
-        <h2>Player Information</h2>
-    </section>
-    <label for="fldNumRounds">Number of rounds to play:</label>
-    <input type="number" name="numRounds" id="fldNumRounds" max="11" min="1" placeholder="1 to 11" value="1">
-    <button id="btnStart">Start</button>
-    <div id="finalResults"></div>
-    <div id="dice">
-        <div id="player">
-            <p id="playerName"></p>
-            <div id="playerDiceArea1">
+    <header>
+        <h1>Going to Town</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Player Information:</h2>
+        </section>
+        <label for="fldNumRounds">Number of rounds to play:</label>
+        <input type="number" name="numRounds" id="fldNumRounds" max="11" min="1" placeholder="1 to 11" value="1">
+        <button id="btnStart">Start</button>
+        <div id="finalResults"></div>
+        <div id="dice">
+            <div id="player">
+                <p id="playerName"></p>
+                <div id="playerDiceArea1">
+                </div>
+                <div id="playerDiceArea2">
+                </div>
+                <div id="playerDiceArea3">
+                </div>
+                <p id="playerScore"></p>
+                <p id="playerFScore"></p>
             </div>
-            <div id="playerDiceArea2">
+            <button id="btnRollDice" disabled>Roll Dice</button>
+            <button id="btnEndRound" disabled>End Round</button>
+            <div id="bot">
+                <p id="botName"></p>
+                <div id="botDiceArea1">
+                </div>
+                <div id="botDiceArea2">
+                </div>
+                <div id="botDiceArea3">
+                </div>
+                <p id="botScore"></p>
+                <p id="botFScore"></p>
             </div>
-            <div id="playerDiceArea3">
-            </div>
-            <p id="playerScore"></p>
-            <p id="playerFScore"></p>
         </div>
-        <button id="btnRollDice" disabled>Roll Dice</button>
-        <button id="btnEndRound" disabled>End Round</button>
-        <div id="bot">
-            <p id="botName"></p>
-            <div id="botDiceArea1">
-            </div>
-            <div id="botDiceArea2">
-            </div>
-            <div id="botDiceArea3">
-            </div>
-            <p id="botScore"></p>
-            <p id="botFScore"></p>
-        </div>
-    </div>
+    </main>
+    <footer></footer>
     <script src="./js/game.js"></script>
     <script src="./js/gamePlay.js"></script>
     <!-- <script src="./js/gametest.js"></script> -->
