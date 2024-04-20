@@ -32,7 +32,32 @@ window.onload = displayInfo;
 // create a game
 const game = createGame();
 // start the game
-btnStart.addEventListener(`click`, playGame);
+btnStart.setAttribute(`disabled`, ``);
+let span = node(`span`);
+if (fldNumRounds.value >= 1 && fldNumRounds.value <= 11) {
+    span.textContent = '';
+    btnStart.removeAttribute(`disabled`);
+    btnStart.addEventListener(`click`, playGame);
+}
+else {
+    btnStart.setAttribute(`disabled`, ``);
+    span.textContent = `** Number of rounds must be between 1 and 11`;
+    let setUp = $$(`#setUp`);
+    setUp.appendChild(span);
+}
+fldNumRounds.addEventListener(`blur`, () => {
+    if (fldNumRounds.value >= 1 && fldNumRounds.value <= 11) {
+        span.textContent = '';
+        btnStart.removeAttribute(`disabled`);
+        btnStart.addEventListener(`click`, playGame);
+    }
+    else {
+        btnStart.setAttribute(`disabled`, ``);
+        span.textContent = `** Number of rounds must be between 1 and 11`;
+        let setUp = $$(`#setUp`);
+        setUp.appendChild(span);
+    }
+})
 
 // create dice rollers
 const playerDice = new DiceRolls(game.player1);
