@@ -183,7 +183,7 @@ class GoingToTown {
      * Gets if the game is finished or not.
      * @returns isGameFinished boolean
      */
-    get isGameFinished(){
+    get isGameFinished() {
         return this.#isGameFinished;
     }
 

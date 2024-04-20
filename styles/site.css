@@ -41,12 +41,14 @@ h1 {
     font-size: 1.5em;
 }
 
-#rules{
+#rules {
+    inline-size: fit-content;
+    margin-inline: 10%;
     color: var(--blue);
     border: 3px solid var(--textColour);
     padding-block: 1vb;
     padding-inline-start: 1vb;
-    padding-inline-end: 0;
+    padding-inline-end: 1vb;
     border-radius: var(--mainBorderRadius);
     margin-block-end: 1vb;
 }
@@ -104,4 +106,40 @@ img {
     inline-size: 3em;
     block-size: auto;
     margin-inline-end: 1vi;
+}
+
+@media (min-width: 768px) {
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 0.5em;
+    }
+
+    form>label {
+        justify-self: start;
+        grid-column: 1/2;
+    }
+
+    form>input:not([type="submit"]) {
+        justify-self: start;
+    }
+
+    form>input[type="submit"] {
+        grid-column: 2/3;
+        inline-size: fit-content;
+        justify-self: center;
+    }
+
+    form>span {
+        grid-column: span 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    h1{
+        text-align: center;
+    }
+    form, #rules {
+        margin-inline: 16.5%;
+    }
 }

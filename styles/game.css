@@ -2,7 +2,11 @@ h1 {
     text-align: center;
 }
 
-main{
+h2 {
+    text-decoration: underline;
+}
+
+main {
     display: flex;
     flex-flow: column;
 }
@@ -11,7 +15,7 @@ div {
     padding-inline-start: 1vb;
 }
 
-#setUp{
+#setUp {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-block-end: 1vb;
@@ -23,24 +27,31 @@ div {
     font-size: .9em;
 }
 
-#setUp input, #setUp button {
+#setUp input,
+#setUp button {
     grid-row: 2;
 }
-#player, #bot, #finalResults {
+
+#player,
+#bot,
+#finalResults {
     inline-size: 100%;
     background-color: var(--yellow);
     border-radius: var(--mainBorderRadius);
 }
+
 #finalResults button {
     background-color: var(--black);
     color: var(--blue);
     margin-block-end: 1vb;
 }
-#buttonGroup{
+
+#buttonGroup {
     background-color: var(--black);
     inline-size: 100%;
     text-align: center;
 }
+
 input,
 button {
     background-color: var(--yellow);
@@ -63,5 +74,18 @@ button {
     #setUp {
         margin-inline: 25%;
         inline-size: 50%;
+    }
+}
+
+@media (min-width: 1200px) {
+    #dice {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1vb;
+    }
+
+    #buttonGroup {
+        grid-row: 2;
+        grid-column: span 2;
     }
 }
