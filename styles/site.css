@@ -17,18 +17,43 @@
     --white: white;
 }
 
+@media (prefers-color-scheme: light) {
+    :root{
+      --yellow: #0013ee;
+      --blue: #e41800;
+      --textColour: #45d2f4;
+      --grey: #737373;
+      --black: white;
+      --white: black;
+    }
+  }
+
 body {
     font-family: var(--fontFamily);
+    background-color: var(--black);
 }
 
 h1 {
     font-family: var(--titleFontFamily);
+    color: var(--blue);
+    font-size: 1.5em;
 }
 
 form {
     display: flex;
     flex-direction: column;
     margin-inline: 10%;
+    padding: 1vi;
+    border: var(--border);
+    border-radius: var(--mainBorderRadius);
+    background-color: var(--yellow);
+    color: var(--textColour);
+}
+
+form input{
+    color: var(--blue);
+    background-color: var(--black);
+    font-size: 1em;
 }
 
 span {

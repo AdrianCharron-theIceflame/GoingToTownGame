@@ -56,7 +56,7 @@ function validateFName() {
     let pattern = /^([A-Z]|\s|'|`|-){1,19}([A-Z]|'|-)?$/i; // The pattern to validate against
     let specialChars = /^([A-Z]|\s|'|`|-)+/i
     let backTick = /.*`$/;
-    fError.textContent = "";
+    fError.textContent = "**";
     errorClass(fname); // give field error
     if (pattern.test(fname.value)) { // if field is valid
         noClass(fname); // remove field error
@@ -86,7 +86,7 @@ function validateLName() {
     let pattern = /^([A-Z]|\s|'|`|-){1,29}([A-Z]|\s|'|-)?$/i; // The pattern to validate against
     let specialChars = /^([A-Z]|\s|'|`|-)+/i
     let backTick = /.*`$/;
-    lError.textContent = " "; // remove text
+    lError.textContent = "**"; // remove text
     errorClass(lname); // give field error
     if (pattern.test(lname.value)) { // if field is valid
         noClass(lname); // remove field error
@@ -115,7 +115,7 @@ function validateUsername() {
     let pattern = /^[A-Z][a-z]{3}[1-5]$/; // complete username pattern
     let middleLetter = /^.[a-z]{3}.$/
     let lowercase = /^[A-Z].*$/; // if the first letter is lowercase
-    userError.textContent = ""; // remove error message
+    userError.textContent = "**"; // remove error message
     errorClass(username); // set class to error
     if (pattern.test(username.value)) { // if pattern returns true
         noClass(username); // remove error class
@@ -145,7 +145,7 @@ phone.addEventListener(`change`, validatePhone)
 function validatePhone() {
     let pattern = /^\(\d{3}\)\s\d{3}-\d{4}$/; // phone number pattern
     errorClass(phone); // set class to error
-    phoneError.textContent = ""; // remove error message
+    phoneError.textContent = "**"; // remove error message
     if (pattern.test(phone.value)) { // if pattern return true
         noClass(phone); // remove class
         phoneError.textContent = ""; // remove error message
@@ -167,7 +167,7 @@ city.addEventListener(`change`, validateCity)
 function validateCity() {
     let pattern = /^[A-Z]{1,42}$/i; // pattern for city name
     errorClass(city); // give error to city
-    cityError.textContent = ""; // remove message
+    cityError.textContent = "**"; // remove message
     if (pattern.test(city.value)) { // if city valid
         noClass(city); // remove error
         cityError.textContent = ""; // remove message
@@ -192,7 +192,7 @@ email.addEventListener(`change`, validateEmail)
 function validateEmail() {
     let pattern = /^([A-Z]|-|\.|\d|_)+@([a-z]|\d|_)+(.ca|.org)$/i; // pattern for an email
     let emailEnd = /^.*(.ca|.org)$/i; // pattern for the end of an email
-    emailError.textContent = ""; // remove the meassge
+    emailError.textContent = "**"; // remove the meassge
     errorClass(email); // give error class
     if (pattern.test(email.value)) { // if email is valid
         noClass(email); // remove the error class
