@@ -204,14 +204,20 @@ function roll(num) {
     }
 } // roll(number)
 
+/**
+ * When a round is over
+ */
 function endTheRound() {
     game.endRound(playerDice.roundScore, adversaryDice.roundScore);
     playerFScore.textContent = `Your final score is ${game.player1.score}`;
     botFScore.textContent = `Your adversary's final score is ${game.player2.score}`;
     // console.log(`${game}`)
     playGame();
-}
+} // endTheRound()
 
+/**
+ * Displays the game ending dialog
+ */
 function endGame() {
     fldNumRounds.removeAttribute(`disabled`);
     let h2 = node(`h2`)
@@ -232,4 +238,4 @@ function endGame() {
     finalResults.appendChild(finalSection)
     btnNewGame.addEventListener(`click`, () => window.location.reload());
     console.log(`${game}`);
-}
+} // endGame()

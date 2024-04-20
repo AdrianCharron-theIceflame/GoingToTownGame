@@ -78,7 +78,11 @@ button {
 }
 
 @media (min-width: 1200px) {
+    main{
+        margin-inline: 16.5%;
+    }
     #dice {
+        margin-block-start: 2vb;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1vb;
