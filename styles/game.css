@@ -1,3 +1,41 @@
-h1{
+h1 {
     text-align: center;
+}
+
+main{
+    display: flex;
+    flex-flow: column;
+}
+
+#setUp{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#setUp label {
+    grid-column: 1;
+    color: var(--blue);
+    font-size: .9em;
+}
+
+#setUp input, #setUp button {
+    grid-row: 2;
+}
+
+input,
+button {
+    background-color: var(--yellow);
+    color: var(--textColour);
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+input:disabled,
+button:disabled {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+button {
+    font-family: var(--titleFontFamily);
 }

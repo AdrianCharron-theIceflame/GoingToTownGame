@@ -43,6 +43,10 @@ h1 {
 
 section{
     background-color: var(--yellow);
+
+}
+section p {
+    color: var(--black);
 }
 h2 {
     color: var(--textColour);
@@ -58,7 +62,7 @@ form {
     color: var(--textColour);
 }
 
-input, button{
+input{
     color: var(--blue);
     background-color: var(--black);
     font-size: 1em;
