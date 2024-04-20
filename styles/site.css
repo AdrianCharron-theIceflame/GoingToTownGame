@@ -15,6 +15,7 @@
     --border: 1px solid var(--black);
     --black: black;
     --white: white;
+    --red: #d10000;
 }
 
 @media (prefers-color-scheme: light) {
@@ -25,6 +26,7 @@
       --grey: #737373;
       --black: white;
       --white: black;
+      --red: #2effff;
     }
   }
 
@@ -57,7 +59,7 @@ form input{
 }
 
 span {
-    color: red;
+    color: var(--red);
     font-size: .7em;
     padding-bottom: .5em;
     font-style: italic;
@@ -65,7 +67,7 @@ span {
 }
 
 .errorClass {
-    border: 3px solid red;
+    border: 3px solid var(--red);
 }
 
 #finalResults {
