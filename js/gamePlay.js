@@ -133,13 +133,14 @@ function roll(num) {
         let img3 = new Image();
         img3.src = `./images/DiceSide${rolls[2]}.png`;
         let p = node(`p`);
-        p.appendChild(textNode(`Round 1: `));
+        p.appendChild(textNode(`Rolls 1: `));
         playerDiceArea1.appendChild(p);
         playerDiceArea1.appendChild(img1);
         playerDiceArea1.appendChild(img2);
         playerDiceArea1.appendChild(img3);
         // console.table(rolls)
         playerDice.addDiceSet(...rolls);
+        playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
         // Adversary
         let img4 = new Image();
         img4.src = `./images/DiceSide${adversRolls[0]}.png`;
@@ -148,13 +149,14 @@ function roll(num) {
         let img6 = new Image();
         img6.src = `./images/DiceSide${adversRolls[2]}.png`;
         p = node(`p`);
-        p.appendChild(textNode(`Round 1: `));
+        p.appendChild(textNode(`Rolls 1: `));
         botDiceArea1.appendChild(p);
         botDiceArea1.appendChild(img4);
         botDiceArea1.appendChild(img5);
         botDiceArea1.appendChild(img6);
         // console.table(adversRolls)
         adversaryDice.addDiceSet(...adversRolls);
+        botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
     }
     if (num == 2) {
         // User Player
@@ -163,31 +165,33 @@ function roll(num) {
         let img2 = new Image();
         img2.src = `./images/DiceSide${rolls[1]}.png`;
         let p = node(`p`);
-        p.appendChild(textNode(`Round 2: `));
+        p.appendChild(textNode(`Rolls 2: `));
         playerDiceArea2.appendChild(p);
         playerDiceArea2.appendChild(img1);
         playerDiceArea2.appendChild(img2);
         // console.table(rolls)
         playerDice.addDiceSet(...rolls);
+        playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
         // Adversary
         let img3 = new Image();
         img3.src = `./images/DiceSide${adversRolls[0]}.png`;
         let img4 = new Image();
         img4.src = `./images/DiceSide${adversRolls[1]}.png`;
         p = node(`p`);
-        p.appendChild(textNode(`Round 2: `));
+        p.appendChild(textNode(`Rolls 2: `));
         botDiceArea2.appendChild(p);
         botDiceArea2.appendChild(img3);
         botDiceArea2.appendChild(img4);
         // console.table(adversRolls)
         adversaryDice.addDiceSet(...adversRolls);
+        botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
     }
     if (num == 1) {
         // User Player
         let img1 = new Image();
         img1.src = `./images/DiceSide${rolls[0]}.png`;
         let p = node(`p`);
-        p.appendChild(textNode(`Round 3: `));
+        p.appendChild(textNode(`Rolls 3: `));
         playerDiceArea3.appendChild(p);
         playerDiceArea3.appendChild(img1);
         btnEndRound.removeAttribute(`disabled`);
@@ -199,7 +203,7 @@ function roll(num) {
         let img2 = new Image();
         img2.src = `./images/DiceSide${adversRolls[0]}.png`;
         p = node(`p`);
-        p.appendChild(textNode(`Round 3: `));
+        p.appendChild(textNode(`Rolls 3: `));
         botDiceArea3.appendChild(p);
         botDiceArea3.appendChild(img2);
         // console.table(adversRolls)
