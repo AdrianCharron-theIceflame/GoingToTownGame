@@ -70,6 +70,15 @@ button {
     font-family: var(--titleFontFamily);
 }
 
+span {
+    inline-size: fit-content;
+    background-color: var(--yellow);
+    block-size: 1.5em;
+    margin-block: 1vb;
+    border-radius: var(--mainBorderRadius);
+    border: var(--border);
+}
+
 @media (min-width: 768px) {
     #setUp {
         margin-inline: 25%;
