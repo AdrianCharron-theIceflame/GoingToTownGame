@@ -226,7 +226,6 @@ function endGame() {
     let p3 = node(`p`);
     p3.appendChild(textNode(`${game.getWinner()}`));
     finalSection.appendChild(p3);
-    finalSection.style.border = `var(--border)`;
     let btnNewGame = node(`button`);
     btnNewGame.textContent = `New Game`;
     finalSection.appendChild(btnNewGame);
