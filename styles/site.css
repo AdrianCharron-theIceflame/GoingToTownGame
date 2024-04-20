@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&family=Source+Sans+3&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --titleFontFamily: Aldrich, sans-serif;
+    --fontFamily: "Source Sans 3", sans-serif;
+    --mainBorderRadius: 10px;
+    --yellow: #ffec11;
+    --blue: #1be7ff;
+    --textColour: #ba2d0b;
+    --grey: #757575;
+    --border: 1px solid var(--black);
+    --black: black;
+    --white: white;
+}
+
+body {
+    font-family: var(--fontFamily);
+}
+
+h1 {
+    font-family: var(--titleFontFamily);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 10%;
+}
+
+span {
+    color: red;
+    font-size: .7em;
+    padding-bottom: .5em;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.errorClass {
+    border: 3px solid red;
+}
+
+#finalResults {
+    inline-size: 50vi;
+    padding-inline: 1vi;
+    border-radius: var(--mainBorderRadius);
+}
+
+img {
+    inline-size: 3em;
+    block-size: auto;
+    margin-inline-end: 1vi;
+}
