@@ -12,9 +12,20 @@
 <body>
     <header>
         <h1>Going to Town</h1>
+        <div id="rules">
+            <p>Rules:</p>
+            <ol>
+                <li>Chose the number of rounds and click start,</li>
+                <li>Roll three dice and take the largest,</li>
+                <li>Roll two dice and take the largest,</li>
+                <li>Roll a dice and add them all up,</li>
+                <li>End the round,</li>
+                <li>Repeat until the game is over!</li>
+            </ol>
+        </div>
     </header>
     <main>
-        <section>
+        <section id="playerInformation">
             <h2>Player Information:</h2>
         </section>
         <div id="setUp">
@@ -24,8 +35,8 @@
         </div>
         <div id="finalResults"></div>
         <div id="dice">
-            <div id="player">
-                <p id="playerName"></p>
+            <section id="player">
+                <h2 id="playerName"></h2>
                 <div id="playerDiceArea1">
                 </div>
                 <div id="playerDiceArea2">
@@ -34,13 +45,13 @@
                 </div>
                 <p id="playerScore"></p>
                 <p id="playerFScore"></p>
-            </div>
+            </section>
             <div id="buttonGroup">
                 <button id="btnRollDice" disabled>Roll Dice</button>
                 <button id="btnEndRound" disabled>End Round</button>
             </div>
-            <div id="bot">
-                <p id="botName"></p>
+            <section id="bot">
+                <h2 id="botName"></h2>
                 <div id="botDiceArea1">
                 </div>
                 <div id="botDiceArea2">
@@ -49,7 +60,7 @@
                 </div>
                 <p id="botScore"></p>
                 <p id="botFScore"></p>
-            </div>
+            </section>
         </div>
     </main>
     <footer></footer>

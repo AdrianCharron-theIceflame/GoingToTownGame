@@ -191,7 +191,7 @@ class GoingToTown {
      * Gets the winner of the game
      * @returns a message saying which player won.
      */
-    #getWinner() {
+    getWinner() {
         if (this.#player1.score > this.#player2.score) {
             return `${this.#player1.username} wins!!`
         } // if player 1 wins
@@ -215,7 +215,7 @@ class GoingToTown {
             this.#player2.score += player2Score;
             if (this.#currentRound == this.#numRounds) {
                 this.#isGameFinished = true;
-                return `${this.#getWinner()}
+                return `${this.getWinner()}
                 \n${this.#player1.gameScore()}
                 \n${this.#player2.gameScore()}`;
             } // if the current round matches
@@ -246,7 +246,7 @@ class GoingToTown {
             return `The game has ended: 
             \n${this.#player1.gameScore()},
             \n${this.#player2.gameScore()}.
-            \n${this.#getWinner()}`;
+            \n${this.getWinner()}`;
         } // if current round is greater than number of rounds
     } // toString()
 

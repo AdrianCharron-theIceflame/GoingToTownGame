@@ -6,7 +6,7 @@ const textNode = text => document.createTextNode(text);
 const node = nodeType => document.createElement(nodeType);
 
 // declare DOM objects
-const section = $$(`section`);
+const section = $$(`#playerInformation`);
 const btnStart = $$(`#btnStart`);
 const btnRollDice = $$(`#btnRollDice`);
 const btnEndRound = $$(`#btnEndRound`);
@@ -22,7 +22,8 @@ const playerScore = $$(`#playerScore`);
 const playerFScore = $$(`#playerFScore`);
 const botScore = $$(`#botScore`);
 const botFScore = $$(`#botFScore`);
-const finalResults = $$(`#finalResults`)
+const finalResults = $$(`#finalResults`);
+const finalSection = node(`section`)
 
 // computer player
 const adversary = new Player(`theAI`, `John`, `Jaix1`);
@@ -64,8 +65,8 @@ function displayInfo() {
     section.appendChild(mail);
     btnRollDice.setAttribute(`disabled`, "")
     btnEndRound.setAttribute(`disabled`, "")
-    $$(`#playerName`).textContent = username + `'s dice`;
-    $$(`#botName`).textContent = adversary.username + `'s dice`;
+    $$(`#playerName`).textContent = username + `'s dice:`;
+    $$(`#botName`).textContent = adversary.username + `'s dice:`;
 } // displayInfo()
 
 /**
@@ -94,16 +95,7 @@ function playGame() {
         btnEndRound.addEventListener(`click`, endTheRound);
     }
     else {
-        fldNumRounds.removeAttribute(`disabled`);
-        let p = node(`p`)
-        p.innerText = `${game}`;
-        finalResults.appendChild(p);
-        finalResults.style.border = `var(--border)`
-        let btnNewGame = node(`button`);
-        btnNewGame.textContent = `New Game`;
-        finalResults.appendChild(btnNewGame);
-        btnNewGame.addEventListener(`click`, () => window.location.reload());
-        console.log(`${game}`)
+        endGame();
     }
 } // playGame()
 
@@ -218,4 +210,27 @@ function endTheRound() {
     botFScore.textContent = `Your adversary's final score is ${game.player2.score}`;
     // console.log(`${game}`)
     playGame();
+}
+
+function endGame() {
+    fldNumRounds.removeAttribute(`disabled`);
+    let h2 = node(`h2`)
+    h2.appendChild(textNode(`The game has ended:`));
+    finalSection.appendChild(h2);
+    let p1 = node(`p`);
+    p1.appendChild(textNode(`${game.player1.username}'s score is: ${game.player1.score}`));
+    finalSection.appendChild(p1);
+    let p2 = node(`p`);
+    p2.appendChild(textNode(`${game.player2.username}'s score is: ${game.player2.score}`));
+    finalSection.appendChild(p2);
+    let p3 = node(`p`);
+    p3.appendChild(textNode(`${game.getWinner()}`));
+    finalSection.appendChild(p3);
+    finalSection.style.border = `var(--border)`;
+    let btnNewGame = node(`button`);
+    btnNewGame.textContent = `New Game`;
+    finalSection.appendChild(btnNewGame);
+    finalResults.appendChild(finalSection)
+    btnNewGame.addEventListener(`click`, () => window.location.reload());
+    console.log(`${game}`);
 }

@@ -19,16 +19,16 @@
 }
 
 @media (prefers-color-scheme: light) {
-    :root{
-      --yellow: #0013ee;
-      --blue: #e41800;
-      --textColour: #45d2f4;
-      --grey: #737373;
-      --black: white;
-      --white: black;
-      --red: #2effff;
+    :root {
+        --yellow: #0013ee;
+        --blue: #e41800;
+        --textColour: #45d2f4;
+        --grey: #737373;
+        --black: white;
+        --white: black;
+        --red: #2effff;
     }
-  }
+}
 
 body {
     font-family: var(--fontFamily);
@@ -41,16 +41,30 @@ h1 {
     font-size: 1.5em;
 }
 
-section{
-    background-color: var(--yellow);
-
+#rules{
+    color: var(--blue);
+    border: 3px solid var(--textColour);
+    padding-block: 1vb;
+    padding-inline-start: 1vb;
+    padding-inline-end: 0;
+    border-radius: var(--mainBorderRadius);
+    margin-block-end: 1vb;
 }
+
+section {
+    padding-inline-start: 1vb;
+    background-color: var(--yellow);
+    border-radius: var(--mainBorderRadius);
+}
+
 section p {
     color: var(--black);
 }
+
 h2 {
     color: var(--textColour);
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -62,7 +76,7 @@ form {
     color: var(--textColour);
 }
 
-input{
+input {
     color: var(--blue);
     background-color: var(--black);
     font-size: 1em;

@@ -58,3 +58,10 @@ button:disabled {
 button {
     font-family: var(--titleFontFamily);
 }
+
+@media (min-width: 768px) {
+    #setUp {
+        margin-inline: 25%;
+        inline-size: 50%;
+    }
+}
