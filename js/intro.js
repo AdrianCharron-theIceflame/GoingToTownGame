@@ -70,7 +70,7 @@ function validateFName() {
     if (backTick.test(fname.value)) // last character is a backtick
         fError.textContent += ` First name cannot end with \`.`;
     // invalid character
-    if (specialChars.test(lname))// invalid character
+    if (!specialChars.test(lname))// invalid character
         fError.textContent += ` Special characters only include: ', \`, and -.`;
     return false;
 } // validateFName()
@@ -99,7 +99,7 @@ function validateLName() {
         lError.textContent += ` Last name length cannot be greater than 30 characters.`;
     if (backTick.test(lname.value)) // last character is a backtick
         lError.textContent += ` Last name cannot end with \`.`;
-    if (specialChars.test(lname))// invalid character
+    if (!specialChars.test(lname))// invalid character
         lError.textContent += ` Special characters only include: ', \`, and -.`;
     return false;
 } // validateLName()
