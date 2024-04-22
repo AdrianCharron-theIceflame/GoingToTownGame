@@ -53,12 +53,12 @@ fname.addEventListener(`change`, validateFName);
  * @returns true if pattern is ok, false if pattern does not pass.
  */
 function validateFName() {
-    let pattern = /^([A-Z]|\s|'|`|-){1,19}([A-Z]|'|-)?$/i; // The pattern to validate against
+    let pattern = /^([A-Z]|\s|'|`|-){1,19}([A-Z]|'|-|[^`])?$/i; // The pattern to validate against
     let specialChars = /^([A-Z]|\s|'|`|-)+/i
     let backTick = /.*`$/;
     fError.textContent = "**";
     errorClass(fname); // give field error
-    if (pattern.test(fname.value)) { // if field is valid
+    if (pattern.test(fname.value) && !backTick.test(fname.value)) { // if field is valid
         noClass(fname); // remove field error
         fError.textContent = " "; // remove text
         return true;
@@ -88,7 +88,7 @@ function validateLName() {
     let backTick = /.*`$/;
     lError.textContent = "**"; // remove text
     errorClass(lname); // give field error
-    if (pattern.test(lname.value)) { // if field is valid
+    if (pattern.test(lname.value) && !backTick.test(lname.value)) { // if field is valid
         noClass(lname); // remove field error
         lError.textContent = " "; // remove text
         return true;
