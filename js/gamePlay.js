@@ -110,7 +110,7 @@ function playGame() {
         btnStart.setAttribute(`disabled`, ``);
         fldNumRounds.setAttribute(`disabled`, ``);
         btnRollDice.removeAttribute(`disabled`);
-        game.numRounds = Number(fldNumRounds.value);
+        game.numRounds = Math.floor(Number(fldNumRounds.value));
         let numDice = 3;
         btnRollDice.addEventListener(`click`, () => {
             roll(numDice--)
@@ -260,5 +260,9 @@ function endGame() {
     finalSection.appendChild(btnNewGame);
     finalResults.appendChild(finalSection)
     btnNewGame.addEventListener(`click`, () => window.location.reload());
+    let btnLeaveGame = node(`a`);
+    btnLeaveGame.textContent = `Leave Game`;
+    finalSection.appendChild(btnLeaveGame);
+    btnLeaveGame.href = `./goodbye.html`;
     console.log(`${game}`);
 } // endGame()
