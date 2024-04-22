@@ -1,0 +1,9 @@
+.goodbye {
+    border: 3px solid var(--textColour);
+    background-color: var(--yellow);
+    inline-size: 75%;
+    text-align: center;
+    margin-inline: auto;
+    padding: 1em;
+    border-radius: var(--mainBorderRadius);
+}
