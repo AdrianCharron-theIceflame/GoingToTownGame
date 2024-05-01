@@ -54,7 +54,7 @@ fname.addEventListener(`change`, validateFName);
  */
 function validateFName() {
     let pattern = /^([A-Z]|\s|'|`|-){1,19}([A-Z]|'|-|[^`])?$/i; // The pattern to validate against
-    let specialChars = /^([A-Z]|\s|'|`|-)+$/i
+    let specialChars = /^([A-Z]|\s|'|`|-)+/i
     let backTick = /.*`$/;
     fError.textContent = "**";
     errorClass(fname); // give field error
@@ -84,7 +84,7 @@ lname.addEventListener(`change`, validateLName);
  */
 function validateLName() {
     let pattern = /^([A-Z]|\s|'|`|-){1,29}([A-Z]|\s|'|-)?$/i; // The pattern to validate against
-    let specialChars = /^([A-Z]|\s|'|`|-)+$/i
+    let specialChars = /^([A-Z]|\s|'|`|-)+/i
     let backTick = /.*`$/;
     lError.textContent = "**"; // remove text
     errorClass(lname); // give field error
