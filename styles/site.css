@@ -18,7 +18,7 @@
     --red: #d10000;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
     :root {
         --yellow: #0013ee;
         --blue: #e41800;
@@ -28,7 +28,7 @@
         --white: black;
         --red: #2effff;
     }
-}
+} */
 
 body {
     font-family: var(--fontFamily);
