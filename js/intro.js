@@ -69,7 +69,6 @@ function validateFName() {
         fError.textContent += ` First name length cannot be greater than 20 characters.`;
     if (backTick.test(fname.value)) // last character is a backtick
         fError.textContent += ` First name cannot end with \`.`;
-    // invalid character
     if (!specialChars.test(lname))// invalid character
         fError.textContent += ` Special characters only include: ', \`, and -.`;
     return false;
