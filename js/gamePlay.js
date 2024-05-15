@@ -259,10 +259,10 @@ function endGame() {
     btnNewGame.textContent = `New Game`;
     finalSection.appendChild(btnNewGame);
     finalResults.appendChild(finalSection)
-    btnNewGame.addEventListener(`click`, () => window.location.reload());
-    let btnLeaveGame = node(`a`);
+    btnNewGame.addEventListener(`click`, () => location.reload());
+    let btnLeaveGame = node(`button`);
     btnLeaveGame.textContent = `Leave Game`;
     finalSection.appendChild(btnLeaveGame);
-    btnLeaveGame.href = `./goodbye.html`;
+    btnLeaveGame.onclick = () => location.href = "./goodbye.html";
     console.log(`${game}`);
 } // endGame()

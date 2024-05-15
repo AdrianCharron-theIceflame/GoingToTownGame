@@ -84,7 +84,11 @@ input {
     font-size: 1em;
 }
 
-span {
+input[type="submit"] {
+    margin-block-start: .7em;
+}
+
+label.error {
     color: var(--red);
     font-size: .7em;
     padding-bottom: .5em;
@@ -92,7 +96,7 @@ span {
     font-weight: bolder;
 }
 
-.errorClass {
+input.error {
     border: 3px solid var(--red);
 }
 
@@ -130,8 +134,8 @@ img {
         justify-self: center;
     }
 
-    form>span {
-        grid-column: span 3;
+    form>label.error {
+        grid-column: 3/4;
     }
 }
 
