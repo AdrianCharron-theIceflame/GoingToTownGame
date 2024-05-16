@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    position: relative;
+    font-size: 2.5em;
+    animation: slideDown 5s linear 1 forwards;
+}
+
+canvas {
+    inline-size: 100%;
+    block-size: auto;
+    position: relative;
+    margin: 0;
+}
+
+button {
+    background-color: var(--yellow);
+    border: 3px solid var(--red);
+    border-radius: var(--mainBorderRadius);
+    position: relative;
+}
+
+@keyframes slideDown {
+    from{
+        inset-block-start: -2.5em;
+    }
+    to {
+        inset-block-start: 0;
+    }
+}
