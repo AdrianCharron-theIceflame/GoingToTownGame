@@ -8,8 +8,6 @@ $(function () { // onload
     let storedCity = localStorage.getItem(`city`);
     let storedEmail = localStorage.getItem(`email`);
     let storedLogin = localStorage.getItem(`lastVisit`);
-    let lastLogin = new Date();
-    localStorage.setItem(`newDate`, lastLogin.toUTCString())
     if (storedFName == null
         && storedLName == null
         && storedUsername == null
@@ -82,6 +80,8 @@ $(function () { // onload
         }); // end form validation
     } // end if
     else { // else redirect to game
+        let lastLogin = new Date();
+        localStorage.setItem(`newDate`, lastLogin.toUTCString())
         location.href = "./game.html";
     } // end else
 }); // end onload
@@ -98,5 +98,7 @@ function submitForm(form) {
     localStorage.setItem(`phone`, $(`#number`).val());
     localStorage.setItem(`city`, $(`#city`).val());
     localStorage.setItem(`email`, $(`#email`).val());
+    let lastLogin = new Date();
+    localStorage.setItem(`newDate`, lastLogin.toUTCString())
     form.submit();
 } // submitForm()

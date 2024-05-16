@@ -91,7 +91,7 @@ function displayInfo() {
     btnEndRound.setAttribute(`disabled`, "")
     $$(`#playerName`).textContent = username + `'s dice:`;
     $$(`#botName`).textContent = adversary.username + `'s dice:`;
-    if (!(lastVisit == null)){
+    if (!(lastVisit == null)) {
         let lastLogin = node(`p`);
         lastLogin.appendChild(textNode(`Your last login was: ${lastVisit}`));
         section.appendChild(lastLogin);
@@ -109,7 +109,7 @@ function displayInfo() {
     localStorage.setItem(`lastVisit`, localStorage.getItem(`newDate`))
 } // displayInfo()
 
-function newPlayer(){
+function newPlayer() {
     localStorage.removeItem(`fname`);
     localStorage.removeItem(`lname`);
     localStorage.removeItem(`username`);
@@ -117,6 +117,7 @@ function newPlayer(){
     localStorage.removeItem(`city`);
     localStorage.removeItem(`email`);
     localStorage.removeItem(`lastVisit`);
+    localStorage.removeItem(`newDate`);
     location.href = "./intro.html";
 }
 
