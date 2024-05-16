@@ -15,6 +15,20 @@ div {
     padding-inline-start: 1vb;
 }
 
+section div#previousPlayer{
+    margin-block-end: 1em;
+    background-color: var(--black);
+    margin-inline: 1vb;
+    padding: .5vb;
+    border-radius: var(--mainBorderRadius);
+}
+
+div#previousPlayer p {
+    color: var(--blue);
+    text-align: center;
+    margin: 0;
+}
+
 #setUp {
     display: grid;
     grid-template-columns: 1fr 1fr;

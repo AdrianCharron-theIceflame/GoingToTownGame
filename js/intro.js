@@ -7,13 +7,17 @@ $(function () { // onload
     let storedPhone = localStorage.getItem(`phone`);
     let storedCity = localStorage.getItem(`city`);
     let storedEmail = localStorage.getItem(`email`);
+    let storedLogin = localStorage.getItem(`lastVisit`);
+    let lastLogin = new Date();
+    localStorage.setItem(`newDate`, lastLogin.toUTCString())
     if (storedFName == null
         && storedLName == null
         && storedUsername == null
         && storedUsername == null
         && storedPhone == null
         && storedCity == null
-        && storedEmail == null) { // if all are null
+        && storedEmail == null
+        && storedLogin == null) { // if all are null
         $(`form`).validate({ // form validation
             rules: { // rules for inputs
                 fname: { // first name
@@ -79,7 +83,7 @@ $(function () { // onload
     } // end if
     else { // else redirect to game
         location.href = "./game.html";
-    }
+    } // end else
 }); // end onload
 
 
