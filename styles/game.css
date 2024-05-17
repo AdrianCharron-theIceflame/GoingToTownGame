@@ -55,19 +55,19 @@ div#previousPlayer p {
     grid-row: 2;
 }
 
+#player,
+#bot,
+#finalResults {
+    inline-size: 100%;
+    background-color: var(--yellow);
+    border-radius: var(--mainBorderRadius);
+    overflow: hidden;
+}
+
 #finalResults{
     inline-size: 85vi;
     margin: auto;
     margin-block-end: 1vb;
-}
-
-#player,
-#bot,
-#finalResults {
-    /* inline-size: 100%; */
-    background-color: var(--yellow);
-    border-radius: var(--mainBorderRadius);
-    overflow: hidden;
 }
 
 #bot img,
