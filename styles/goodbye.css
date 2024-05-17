@@ -1,3 +1,6 @@
+body{
+    text-align: center;
+}
 .goodbye {
     border: 3px solid var(--textColour);
     background-color: var(--yellow);
@@ -6,4 +9,19 @@
     margin-inline: auto;
     padding: 1em;
     border-radius: var(--mainBorderRadius);
+}
+div{
+    margin-inline: auto;
+    inline-size: fit-content;
+    text-align: right;
+}
+p{
+    font-family: var(--titleFontFamily);
+    color: var(--blue);
+}
+button {
+    background-color: var(--yellow);
+    border: 3px solid var(--red);
+    border-radius: var(--mainBorderRadius);
+    position: relative;
 }

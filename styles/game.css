@@ -6,6 +6,11 @@ h2 {
     text-decoration: underline;
 }
 
+button#quit{
+    background-color: var(--black);
+    color: var(--blue);
+}
+
 main {
     display: flex;
     flex-flow: column;
