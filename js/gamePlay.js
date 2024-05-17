@@ -1,12 +1,178 @@
 "use strict";
 const adversary = new Player(`theAI`, `John`, `Jaix1`);
 $(function () {
+    $(`#bot`).hide();
+    $(`#player`).hide();
+    $(`#buttonGroup`).hide();
     const userPlayer = new Player(localStorage.getItem(`fname`), localStorage.getItem(`lname`), localStorage.getItem(`username`), localStorage.getItem(`email`), localStorage.getItem(`phone`));
     displayInfo();
     let game = new GoingToTown(userPlayer, adversary);
     // create dice rollers
     const playerDice = new DiceRolls(game.player1);
     const adversaryDice = new DiceRolls(game.player2);
+    // start the game
+    const errorLabel = node(`label`);
+    errorLabel.setAttribute(`class`, `error`)
+    const setup = $$(`#setUp`);
+    setup.appendChild(errorLabel);
+    btnStart.setAttribute(`disabled`, ``);
+    if (fldNumRounds.value >= 1 && fldNumRounds.value <= 11) {
+        btnStart.removeAttribute(`disabled`);
+        $(`label.error`).hide();
+    }
+    else {
+        btnStart.setAttribute(`disabled`, ``);
+        $(`label.error`).show();
+        errorLabel.textContent = `Number must be between 1 and 11.`
+    }
+    fldNumRounds.addEventListener(`input`, () => {
+        if (fldNumRounds.value >= 1 && fldNumRounds.value <= 11) {
+            btnStart.removeAttribute(`disabled`);
+            $(`label.error`).hide();
+            errorLabel.textContent = ``;
+        }
+        else {
+            btnStart.setAttribute(`disabled`, ``);
+            $(`label.error`).show();
+            errorLabel.textContent = `Number must be between 1 and 11.`
+        }
+    })
+
+    btnStart.addEventListener(`click`, playGame);
+    /**
+     * The gameplay flow
+     */
+    function playGame() {
+        $(`#bot`).slideToggle();
+        $(`#player`).slideToggle();
+        $(`#buttonGroup`).slideToggle();
+        btnEndRound.setAttribute(`disabled`, ``)
+        if (!game.isGameFinished) {
+            btnStart.setAttribute(`disabled`, ``);
+            fldNumRounds.setAttribute(`disabled`, ``);
+            btnRollDice.removeAttribute(`disabled`);
+            game.numRounds = Math.floor(Number(fldNumRounds.value));
+            let numDice = 3;
+            btnRollDice.addEventListener(`click`, () => {
+                roll(numDice--)
+            });
+            btnEndRound.addEventListener(`click`, endTheRound);
+        }
+        else {
+            endGame();
+        }
+    } // playGame()
+    /**
+     * Rolls how many dice are passed
+     * @param {Number} num the number of dice
+     */
+    function roll(num) {
+        let rolls = DiceRolls.rollDice(num);
+        let adversRolls = DiceRolls.rollDice(num);
+        let playerImg1 = document.querySelector(`#playerDice1`)
+        let playerImg2 = document.querySelector(`#playerDice2`)
+        let playerImg3 = document.querySelector(`#playerDice3`)
+        let botImg1 = document.querySelector(`#botDice1`)
+        let botImg2 = document.querySelector(`#botDice2`)
+        let botImg3 = document.querySelector(`#botDice3`)
+        let img1 = new Image();
+        let img2 = new Image();
+        let img3 = new Image();
+        let img4 = new Image();
+        let img5 = new Image();
+        let img6 = new Image();
+        if (num == 3) {
+            playerDice.clearRound();
+            adversaryDice.clearRound();
+            // User Player
+            img1.src = `./images/DiceSide${rolls[0]}.png`;
+            playerImg1.setAttribute(`src`, img1.src);
+            playerImg1.addEventListener(`load`, () => {
+                playerImg1.style.animation = "roll-in 2s linear 1 forwards"
+            })
+            img2.src = `./images/DiceSide${rolls[1]}.png`;
+            playerImg2.setAttribute(`src`, img2.src);
+            playerImg2.addEventListener(`load`, () => {
+                playerImg2.style.animation = "roll-in 2s linear 1 forwards"
+            })
+            img3.src = `./images/DiceSide${rolls[2]}.png`;
+            playerImg3.setAttribute(`src`, img3.src);
+            playerImg3.addEventListener(`load`, () => {
+                playerImg3.style.animation = "roll-in 2s linear 1 forwards"
+            })
+            playerDice.addDiceSet(...rolls);
+            playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
+            // Adversary
+            img4.src = `./images/DiceSide${adversRolls[0]}.png`;
+            botImg1.setAttribute(`src`, img4.src);
+            botImg1.addEventListener(`load`, () => {
+                botImg1.style.animation = "roll-in 2s linear 1 forwards"
+            })
+            img5.src = `./images/DiceSide${adversRolls[1]}.png`;
+            botImg2.setAttribute(`src`, img5.src);
+            botImg2.addEventListener(`load`, () => {
+                botImg2.style.animation = "roll-in 2s linear 1 forwards"
+            })
+            img6.src = `./images/DiceSide${adversRolls[2]}.png`;
+            botImg3.setAttribute(`src`, img6.src);
+            botImg3.addEventListener(`load`, () => {
+                botImg3.style.animation = "roll-in 2s linear 1 forwards"
+            })
+            adversaryDice.addDiceSet(...adversRolls);
+            botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
+        }
+        if (num == 2) {
+            playerImg2.style.removeProperty(`animation`);
+            playerImg3.style.removeProperty(`animation`);
+            botImg2.style.removeProperty(`animation`);
+            botImg3.style.removeProperty(`animation`);
+            // User Player
+            img2.src = `./images/DiceSide${rolls[0]}.png`;
+            playerImg2.setAttribute(`src`, img2.src);
+            playerImg2.addEventListener(`load`, () => {
+                playerImg2.style.animation = `roll-in 2s linear 1 forwards`
+            })
+            img3.src = `./images/DiceSide${rolls[1]}.png`;
+            playerImg3.setAttribute(`src`, img3.src);
+            playerImg3.addEventListener(`load`, () => {
+                playerImg3.style.animation = `roll-in 2s linear 1 forwards`
+            })
+            playerDice.addDiceSet(...rolls);
+            playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
+            // Adversary
+            img5.src = `./images/DiceSide${adversRolls[0]}.png`;
+            botImg2.setAttribute(`src`, img5.src);
+            botImg2.addEventListener(`load`, () => {
+                botImg2.style.animation = `roll-in 2s linear 1 forwards`
+            })
+            img6.src = `./images/DiceSide${adversRolls[1]}.png`;
+            botImg3.setAttribute(`src`, img6.src);
+            botImg3.addEventListener(`load`, () => {
+                botImg3.style.animation = `roll-in 2s linear 1 forwards`
+            })
+            adversaryDice.addDiceSet(...adversRolls);
+            botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
+        }
+        if (num == 1) {
+            playerImg3.style.removeProperty(`animation`);
+            botImg3.style.removeProperty(`animation`);
+            img3.src = `./images/DiceSide${rolls[0]}.png`;
+            playerImg3.setAttribute(`src`, img3.src);
+            playerImg3.addEventListener(`load`, () => {
+                playerImg3.style.animation = `roll-in 2s linear 1 forwards`
+            })
+            playerDice.addDiceSet(...rolls);
+            playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
+            // Adversary
+            img6.src = `./images/DiceSide${adversRolls[0]}.png`;
+            botImg3.setAttribute(`src`, img6.src);
+            botImg3.addEventListener(`load`, () => {
+                botImg3.style.animation = `roll-in 2s linear 1 forwards`
+            })
+            adversaryDice.addDiceSet(...adversRolls);
+            botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
+        }
+    } // roll(number)
 });
 // // functions that I will use
 const $$ = sel => document.querySelector(sel);
@@ -15,50 +181,26 @@ const node = nodeType => document.createElement(nodeType);
 
 // // declare DOM objects
 const section = $$(`#playerInformation`);
-// const btnStart = $$(`#btnStart`);
-// const btnRollDice = $$(`#btnRollDice`);
-// const btnEndRound = $$(`#btnEndRound`);
-// const fldNumRounds = $$(`#fldNumRounds`);
-const playerDiceArea1 = $$(`#playerDiceArea`);
+const btnStart = $$(`#btnStart`);
+const btnRollDice = $$(`#btnRollDice`);
+const btnEndRound = $$(`#btnEndRound`);
+const fldNumRounds = $$(`#fldNumRounds`);
+const playerDiceArea = $$(`#playerDiceArea`);
 
-const botDiceArea1 = $$(`#botDiceArea`);
-// const playerScore = $$(`#playerScore`);
-// const playerFScore = $$(`#playerFScore`);
-// const botScore = $$(`#botScore`);
-// const botFScore = $$(`#botFScore`);
-// const finalResults = $$(`#finalResults`);
-// const finalSection = node(`section`)
+const botDiceArea = $$(`#botDiceArea`);
+const playerScore = $$(`#playerScore`);
+const playerFScore = $$(`#playerFScore`);
+const botScore = $$(`#botScore`);
+const botFScore = $$(`#botFScore`);
+const finalResults = $$(`#finalResults`);
+const finalSection = node(`section`)
 
 // // computer player
 // // display the info
 // window.onload = displayInfo;
 // // create a game
 // const game = createGame();
-// // start the game
-// const span = node(`span`);
-// const setup = $$(`#setUp`);
-// setup.appendChild(span);
-// btnStart.setAttribute(`disabled`, ``);
-// if (fldNumRounds.value >= 1 && fldNumRounds.value <= 11) {
-//     btnStart.removeAttribute(`disabled`);
-//     span.textContent = ``;
-// }
-// else {
-//     btnStart.setAttribute(`disabled`, ``);
-//     span.textContent = `** Number must be between 1 and 11.`
-// }
-// fldNumRounds.addEventListener(`blur`, () => {
-//     if (fldNumRounds.value >= 1 && fldNumRounds.value <= 11) {
-//         btnStart.removeAttribute(`disabled`);
-//         span.textContent = ``;
-//     }
-//     else {
-//         btnStart.setAttribute(`disabled`, ``);
-//         span.textContent = `** Number must be between 1 and 11.`
-//     }
-// })
-
-// btnStart.addEventListener(`click`, playGame);
+// start the game
 
 
 /**
@@ -119,134 +261,10 @@ function newPlayer() {
     localStorage.removeItem(`lastVisit`);
     localStorage.removeItem(`newDate`);
     location.href = "./intro.html";
-}
+} // newPlayer()
 
 
-// /**
-//  * The gameplay flow
-//  */
-// function playGame() {
-//     btnEndRound.setAttribute(`disabled`, ``)
-//     if (!game.isGameFinished) {
-//         btnStart.setAttribute(`disabled`, ``);
-//         fldNumRounds.setAttribute(`disabled`, ``);
-//         btnRollDice.removeAttribute(`disabled`);
-//         game.numRounds = Math.floor(Number(fldNumRounds.value));
-//         let numDice = 3;
-//         btnRollDice.addEventListener(`click`, () => {
-//             roll(numDice--)
-//         });
-//         btnEndRound.addEventListener(`click`, endTheRound);
-//     }
-//     else {
-//         endGame();
-//     }
-// } // playGame()
 
-// /**
-//  * Rolls how many dice are passed
-//  * @param {Number} num the number of dice
-//  */
-// function roll(num) {
-//     let rolls = DiceRolls.rollDice(num);
-//     let adversRolls = DiceRolls.rollDice(num);
-//     if (num == 3) {
-//         playerScore.textContent = ``;
-//         botScore.textContent = ``;
-//         playerDiceArea1.innerHTML = ``;
-//         playerDiceArea2.innerHTML = ``;
-//         playerDiceArea3.innerHTML = ``;
-//         botDiceArea1.innerHTML = ``;
-//         botDiceArea2.innerHTML = ``;
-//         botDiceArea3.innerHTML = ``;
-//         playerDice.clearRound();
-//         adversaryDice.clearRound();
-//         // User Player
-//         let img1 = new Image();
-//         img1.src = `./images/DiceSide${rolls[0]}.png`;
-//         let img2 = new Image();
-//         img2.src = `./images/DiceSide${rolls[1]}.png`;
-//         let img3 = new Image();
-//         img3.src = `./images/DiceSide${rolls[2]}.png`;
-//         let p = node(`p`);
-//         p.appendChild(textNode(`Rolls 1: `));
-//         playerDiceArea1.appendChild(p);
-//         playerDiceArea1.appendChild(img1);
-//         playerDiceArea1.appendChild(img2);
-//         playerDiceArea1.appendChild(img3);
-//         // console.table(rolls)
-//         playerDice.addDiceSet(...rolls);
-//         playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
-//         // Adversary
-//         let img4 = new Image();
-//         img4.src = `./images/DiceSide${adversRolls[0]}.png`;
-//         let img5 = new Image();
-//         img5.src = `./images/DiceSide${adversRolls[1]}.png`;
-//         let img6 = new Image();
-//         img6.src = `./images/DiceSide${adversRolls[2]}.png`;
-//         p = node(`p`);
-//         p.appendChild(textNode(`Rolls 1: `));
-//         botDiceArea1.appendChild(p);
-//         botDiceArea1.appendChild(img4);
-//         botDiceArea1.appendChild(img5);
-//         botDiceArea1.appendChild(img6);
-//         // console.table(adversRolls)
-//         adversaryDice.addDiceSet(...adversRolls);
-//         botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
-//     }
-//     if (num == 2) {
-//         // User Player
-//         let img1 = new Image();
-//         img1.src = `./images/DiceSide${rolls[0]}.png`;
-//         let img2 = new Image();
-//         img2.src = `./images/DiceSide${rolls[1]}.png`;
-//         let p = node(`p`);
-//         p.appendChild(textNode(`Rolls 2: `));
-//         playerDiceArea2.appendChild(p);
-//         playerDiceArea2.appendChild(img1);
-//         playerDiceArea2.appendChild(img2);
-//         // console.table(rolls)
-//         playerDice.addDiceSet(...rolls);
-//         playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
-//         // Adversary
-//         let img3 = new Image();
-//         img3.src = `./images/DiceSide${adversRolls[0]}.png`;
-//         let img4 = new Image();
-//         img4.src = `./images/DiceSide${adversRolls[1]}.png`;
-//         p = node(`p`);
-//         p.appendChild(textNode(`Rolls 2: `));
-//         botDiceArea2.appendChild(p);
-//         botDiceArea2.appendChild(img3);
-//         botDiceArea2.appendChild(img4);
-//         // console.table(adversRolls)
-//         adversaryDice.addDiceSet(...adversRolls);
-//         botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
-//     }
-//     if (num == 1) {
-//         // User Player
-//         let img1 = new Image();
-//         img1.src = `./images/DiceSide${rolls[0]}.png`;
-//         let p = node(`p`);
-//         p.appendChild(textNode(`Rolls 3: `));
-//         playerDiceArea3.appendChild(p);
-//         playerDiceArea3.appendChild(img1);
-//         btnEndRound.removeAttribute(`disabled`);
-//         btnRollDice.setAttribute(`disabled`, "");
-//         // console.table(rolls)
-//         playerDice.addDiceSet(...rolls);
-//         playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
-//         // Adversary
-//         let img2 = new Image();
-//         img2.src = `./images/DiceSide${adversRolls[0]}.png`;
-//         p = node(`p`);
-//         p.appendChild(textNode(`Rolls 3: `));
-//         botDiceArea3.appendChild(p);
-//         botDiceArea3.appendChild(img2);
-//         // console.table(adversRolls)
-//         adversaryDice.addDiceSet(...adversRolls);
-//         botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
-//     }
-// } // roll(number)
 
 // /**
 //  * When a round is over
@@ -287,3 +305,4 @@ function newPlayer() {
 //     btnLeaveGame.onclick = () => location.href = "./goodbye.html";
 //     console.log(`${game}`);
 // } // endGame()
+

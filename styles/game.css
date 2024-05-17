@@ -15,7 +15,7 @@ div {
     padding-inline-start: 1vb;
 }
 
-section div#previousPlayer{
+section div#previousPlayer {
     margin-block-end: 1em;
     background-color: var(--black);
     margin-inline: 1vb;
@@ -32,10 +32,12 @@ div#previousPlayer p {
 #setUp {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-block-end: 1vb;
+    margin-block: 1vb;
+    column-gap: 1vb;
+    row-gap: 1vb;
 }
 
-#setUp label {
+#setUp label:not(.error) {
     grid-column: 1;
     color: var(--blue);
     font-size: .9em;
@@ -52,6 +54,13 @@ div#previousPlayer p {
     inline-size: 100%;
     background-color: var(--yellow);
     border-radius: var(--mainBorderRadius);
+    overflow: hidden;
+}
+
+#bot img,
+#player img {
+    position: relative;
+    inset-inline-start: -20em;
 }
 
 #finalResults button,
@@ -69,6 +78,7 @@ a {
     background-color: var(--black);
     inline-size: 100%;
     text-align: center;
+    margin-block: 1vb;
 }
 
 input,
@@ -88,24 +98,30 @@ button:disabled {
     color: var(--black);
 }
 
-button,
-a {
+button {
     font-family: var(--titleFontFamily);
 }
 
-span {
-    inline-size: fit-content;
+label.error {
     background-color: var(--yellow);
-    block-size: 1.5em;
-    margin-block: 1vb;
-    border-radius: var(--mainBorderRadius);
+    block-size: fit-content;
+    border-radius: calc(var(--mainBorderRadius)/2);
     border: var(--border);
+    padding-inline: .3vb;
 }
 
 @media (min-width: 768px) {
     #setUp {
         margin-inline: 25%;
         inline-size: 50%;
+    }
+
+    section div#previousPlayer {
+        inline-size: fit-content;
+    }
+
+    div#previousPlayer p {
+        text-align: left;
     }
 }
 
@@ -124,5 +140,54 @@ span {
     #buttonGroup {
         grid-row: 2;
         grid-column: span 2;
+    }
+
+}
+
+
+@keyframes roll-in {
+    0%{
+        transform: translateY(0%) rotate(0deg);
+    }
+    25%{
+        transform: translateY(-60%) rotate(72deg);
+    }
+    
+    40%{
+        transform: translateY(0%) rotate(144deg);
+    }
+    
+    55%{
+        transform: translateY(-30%) rotate(216deg);
+    }
+    
+    70% {
+        transform: translateY(0%) rotate(288deg);
+    }
+
+    80% {
+        transform: translateY(-15%) rotate(360deg);
+    }
+
+    90% {
+        transform: translateY(0%) rotate(432deg);
+    }
+
+    95% {
+        transform: translateY(-7%) rotate(504deg);
+    }
+
+    97% {
+        transform: translateY(0%) rotate(576deg);
+    }
+
+    99% {
+        transform: translateY(-3%) rotate(648deg);
+        inset-inline-start: 0;
+    }
+
+    100% {
+        transform: translateY(0) rotate(720deg);
+        inset-inline-start: 0;
     }
 }
