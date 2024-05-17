@@ -14,6 +14,20 @@ canvas {
     block-size: auto;
     position: relative;
     margin: 0;
+    padding: 0;
+}
+
+div#imgTravel{
+    inline-size: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+
+img{
+    block-size: auto;
+    inline-size: 120px;
+    position: relative;
+    inset-inline-start: -125px;
 }
 
 button {
