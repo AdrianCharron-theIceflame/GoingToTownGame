@@ -74,7 +74,7 @@ $(function () { // onload
                 email: { // email
                     required: "* Please enter your email",
                     email: `* Please enter a valid email.`,
-                    pattern: `* Special characters include: - _ and . before the @<br> - _ after the @<br> can only end with .ca or .org`
+                    pattern: `* Special characters include: - and _<br>can only end with .ca or .org`
                 } // end email
             }, // end messages
             submitHandler: submitForm // submit handler
