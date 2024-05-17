@@ -13,7 +13,6 @@ $(function () {
     const blueColour = `#1be7ff`;
     let rect1X = 0;
     let rect2X = 0;
-    ctx.translate(0, 87);
     setInterval(() => {
         moveCycle(cycle);
         drawLine1(ctx);
@@ -33,7 +32,7 @@ $(function () {
         //     location.href = "./intro.html";
         // }
     }
-    let line1Y = 0;
+    let line1Y = 87;
     /**
      * 
      * @param {CanvasRenderingContext2D} ctx 
@@ -62,16 +61,16 @@ $(function () {
                     ctx.rect(rect1X, line1Y, 10, 5);
                     rect1X += 10;
                 }
-        if (line1Y > 70) {
-            line1Y -= 10;
+        if (line1Y < 0) {
+            line1Y += 20;
         }
-        if (line1Y < -87) {
-            line1Y += 10;
+        if (line1Y > 150) {
+            line1Y += 20;
         }
         ctx.fill();
     }
 
-    let line2Y = 150;
+    let line2Y = 237;
     /**
      * 
      * @param {CanvasRenderingContext2D} ctx 
@@ -100,11 +99,11 @@ $(function () {
                     ctx.rect(rect2X, line2Y, 10, 5);
                     rect2X += 10;
                 }
-        if (line2Y > 263) {
-            line2Y -= 10;
+        if (line2Y > 350) {
+            line2Y -= 20;
         }
-        if (line2Y < 80) {
-            line2Y += 10;
+        if (line2Y < 150) {
+            line2Y += 20;
         }
         ctx.fill();
     }
