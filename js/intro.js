@@ -43,8 +43,8 @@ $(function () { // onload
                 }, // end city
                 email: { // email
                     required: true,
-                    email: true
-                    // pattern: /^([A-Z]|-|\.|\d|_)+@([a-z]|\d|_)+(.ca|.org)$/i
+                    email: true,
+                    pattern: /^([A-Z]|-|\.|\d|_)+@([a-z]|\d|_)+(.ca|.org)$/i
                 } // end email
             }, // end rules
             messages: { // error messages
@@ -73,7 +73,8 @@ $(function () { // onload
                 }, // end city
                 email: { // email
                     required: "* Please enter your email",
-                    email: `* Please enter a valid email.`
+                    email: `* Please enter a valid email.`,
+                    pattern: `* Special characters include: - _ and . before the @<br> - _ after the @<br> can only end with .ca or .org`
                 } // end email
             }, // end messages
             submitHandler: submitForm // submit handler
