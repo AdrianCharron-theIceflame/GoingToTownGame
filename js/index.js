@@ -28,9 +28,6 @@ $(function () {
             leftPos += 5;
             cycle.style.insetInlineStart = leftPos + `px`;
         }
-        // else{
-        //     location.href = "./intro.html";
-        // }
     }
     let line1Y = 87;
     /**
@@ -38,6 +35,12 @@ $(function () {
      * @param {CanvasRenderingContext2D} ctx 
      */
     function drawLine1(ctx) {
+        if (line1Y < 0) {
+            line1Y += 20;
+        }
+        if (line1Y > 150) {
+            line1Y -= 20;
+        }
         let randomDirection = Math.floor(Math.random() * 4);
         ctx.fillStyle = blueColour;
         ctx.beginPath();
@@ -61,12 +64,6 @@ $(function () {
                     ctx.rect(rect1X, line1Y, 10, 5);
                     rect1X += 10;
                 }
-        if (line1Y < 0) {
-            line1Y += 20;
-        }
-        if (line1Y > 150) {
-            line1Y += 20;
-        }
         ctx.fill();
     }
 
@@ -76,6 +73,12 @@ $(function () {
      * @param {CanvasRenderingContext2D} ctx 
      */
     function drawLine2(ctx) {
+        if (line2Y > 350) {
+            line2Y -= 20;
+        }
+        if (line2Y < 150) {
+            line2Y += 20;
+        }
         let randomDirection = Math.floor(Math.random() * 4);
         ctx.fillStyle = redColour;
         ctx.beginPath();
@@ -99,12 +102,9 @@ $(function () {
                     ctx.rect(rect2X, line2Y, 10, 5);
                     rect2X += 10;
                 }
-        if (line2Y > 350) {
-            line2Y -= 20;
-        }
-        if (line2Y < 150) {
-            line2Y += 20;
-        }
         ctx.fill();
     }
+    setTimeout(()=>{
+        location.href = "intro.html"
+    }, 10000)
 });
