@@ -86,6 +86,76 @@ $(function () {
         let img5 = new Image();
         let img6 = new Image();
         if (num == 3) {
+            let diceImg = [];
+            if (rolls[0] > rolls[1] && rolls[0] > rolls[2]) {
+                diceImg.push(rolls[0]);
+                if (rolls[1] > rolls[2]) {
+                    diceImg.push(rolls[1]);
+                    diceImg.push(rolls[2]);
+                }
+                else {
+                    diceImg.push(rolls[2]);
+                    diceImg.push(rolls[1]);
+                }
+            }
+            else
+                if (rolls[1] > rolls[0] && rolls[1] > rolls[2]) {
+                    diceImg.push(rolls[1]);
+                    if (rolls[0] > rolls[2]) {
+                        diceImg.push(rolls[0]);
+                        diceImg.push(rolls[2]);
+                    }
+                    else {
+                        diceImg.push(rolls[2]);
+                        diceImg.push(rolls[0]);
+                    }
+                }
+                else {
+                    diceImg.push(rolls[2]);
+                    if (rolls[0] > rolls[1]) {
+                        diceImg.push(rolls[0]);
+                        diceImg.push(rolls[1]);
+                    }
+                    else {
+                        diceImg.push(rolls[1]);
+                        diceImg.push(rolls[0]);
+                    }
+                }
+            let botDiceImg = [];
+            if (adversRolls[0] > adversRolls[1] && adversRolls[0] > adversRolls[2]) {
+                botDiceImg.push(adversRolls[0]);
+                if (adversRolls[1] > adversRolls[2]) {
+                    botDiceImg.push(adversRolls[1]);
+                    botDiceImg.push(adversRolls[2]);
+                }
+                else {
+                    botDiceImg.push(adversRolls[2]);
+                    botDiceImg.push(adversRolls[1]);
+                }
+            }
+            else
+                if (adversRolls[1] > adversRolls[0] && adversRolls[1] > adversRolls[2]) {
+                    botDiceImg.push(adversRolls[1]);
+                    if (adversRolls[0] > adversRolls[2]) {
+                        botDiceImg.push(adversRolls[0]);
+                        botDiceImg.push(adversRolls[2]);
+                    }
+                    else {
+                        botDiceImg.push(adversRolls[2]);
+                        botDiceImg.push(adversRolls[0]);
+                    }
+                }
+                else {
+                    botDiceImg.push(adversRolls[2]);
+                    if (adversRolls[0] > adversRolls[1]) {
+                        botDiceImg.push(adversRolls[0]);
+                        botDiceImg.push(adversRolls[1]);
+                    }
+                    else {
+                        botDiceImg.push(adversRolls[1]);
+                        botDiceImg.push(adversRolls[0]);
+                    }
+                }
             playerImg1.style.removeProperty(`animation`);
             playerImg2.style.removeProperty(`animation`);
             playerImg3.style.removeProperty(`animation`);
@@ -95,17 +165,17 @@ $(function () {
             playerDice.clearRound();
             adversaryDice.clearRound();
             // User Player
-            img1.src = `./images/DiceSide${rolls[0]}.png`;
+            img1.src = `./images/DiceSide${diceImg[0]}.png`;
             playerImg1.setAttribute(`src`, img1.src);
             playerImg1.addEventListener(`load`, () => {
                 playerImg1.style.animation = "roll-in 2s linear 1 forwards"
             })
-            img2.src = `./images/DiceSide${rolls[1]}.png`;
+            img2.src = `./images/DiceSide${diceImg[1]}.png`;
             playerImg2.setAttribute(`src`, img2.src);
             playerImg2.addEventListener(`load`, () => {
                 playerImg2.style.animation = "roll-in 2s linear 1 forwards"
             })
-            img3.src = `./images/DiceSide${rolls[2]}.png`;
+            img3.src = `./images/DiceSide${diceImg[2]}.png`;
             playerImg3.setAttribute(`src`, img3.src);
             playerImg3.addEventListener(`load`, () => {
                 playerImg3.style.animation = "roll-in 2s linear 1 forwards"
@@ -113,17 +183,17 @@ $(function () {
             playerDice.addDiceSet(...rolls);
             playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
             // Adversary
-            img4.src = `./images/DiceSide${adversRolls[0]}.png`;
+            img4.src = `./images/DiceSide${botDiceImg[0]}.png`;
             botImg1.setAttribute(`src`, img4.src);
             botImg1.addEventListener(`load`, () => {
                 botImg1.style.animation = "roll-in 2s linear 1 forwards"
             })
-            img5.src = `./images/DiceSide${adversRolls[1]}.png`;
+            img5.src = `./images/DiceSide${botDiceImg[1]}.png`;
             botImg2.setAttribute(`src`, img5.src);
             botImg2.addEventListener(`load`, () => {
                 botImg2.style.animation = "roll-in 2s linear 1 forwards"
             })
-            img6.src = `./images/DiceSide${adversRolls[2]}.png`;
+            img6.src = `./images/DiceSide${botDiceImg[2]}.png`;
             botImg3.setAttribute(`src`, img6.src);
             botImg3.addEventListener(`load`, () => {
                 botImg3.style.animation = "roll-in 2s linear 1 forwards"
@@ -132,17 +202,37 @@ $(function () {
             botScore.textContent = `Your adversary's score is ${adversaryDice.roundScore}`
         }
         if (num == 2) {
+            let diceImg = [];
+            if (rolls[0] > rolls[1]) {
+                diceImg.push(rolls[0]);
+                diceImg.push(rolls[1]);
+            }
+            else {
+                diceImg.push(rolls[1]);
+                diceImg.push(rolls[0]);
+
+            }
+            let botDiceImg = [];
+            if (adversRolls[0] > adversRolls[1]) {
+                botDiceImg.push(adversRolls[0]);
+                botDiceImg.push(adversRolls[1]);
+            }
+            else {
+                botDiceImg.push(adversRolls[1]);
+                botDiceImg.push(adversRolls[0]);
+
+            }
             playerImg2.style.removeProperty(`animation`);
             playerImg3.style.removeProperty(`animation`);
             botImg2.style.removeProperty(`animation`);
             botImg3.style.removeProperty(`animation`);
             // User Player
-            img2.src = `./images/DiceSide${rolls[0]}.png`;
+            img2.src = `./images/DiceSide${diceImg[0]}.png`;
             playerImg2.setAttribute(`src`, img2.src);
             playerImg2.addEventListener(`load`, () => {
                 playerImg2.style.animation = `roll-in 2s linear 1 forwards`
             })
-            img3.src = `./images/DiceSide${rolls[1]}.png`;
+            img3.src = `./images/DiceSide${diceImg[1]}.png`;
             playerImg3.setAttribute(`src`, img3.src);
             playerImg3.addEventListener(`load`, () => {
                 playerImg3.style.animation = `roll-in 2s linear 1 forwards`
@@ -150,12 +240,12 @@ $(function () {
             playerDice.addDiceSet(...rolls);
             playerScore.textContent = `Your score for the round is ${playerDice.roundScore}`
             // Adversary
-            img5.src = `./images/DiceSide${adversRolls[0]}.png`;
+            img5.src = `./images/DiceSide${botDiceImg[0]}.png`;
             botImg2.setAttribute(`src`, img5.src);
             botImg2.addEventListener(`load`, () => {
                 botImg2.style.animation = `roll-in 2s linear 1 forwards`
             })
-            img6.src = `./images/DiceSide${adversRolls[1]}.png`;
+            img6.src = `./images/DiceSide${botDiceImg[1]}.png`;
             botImg3.setAttribute(`src`, img6.src);
             botImg3.addEventListener(`load`, () => {
                 botImg3.style.animation = `roll-in 2s linear 1 forwards`
@@ -241,15 +331,6 @@ const playerScore = $$(`#playerScore`);
 const playerFScore = $$(`#playerFScore`);
 const botScore = $$(`#botScore`);
 const botFScore = $$(`#botFScore`);
-const finalResults = $$(`#finalResults`);
-const finalSection = node(`section`)
-
-// // computer player
-// // display the info
-// window.onload = displayInfo;
-// // create a game
-// const game = createGame();
-// start the game
 
 
 /**
