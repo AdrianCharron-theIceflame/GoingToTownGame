@@ -9,13 +9,13 @@ $(function () { // onload
     let storedEmail = localStorage.getItem(`email`);
     let storedLogin = localStorage.getItem(`lastVisit`);
     if (storedFName == null
-        && storedLName == null
-        && storedUsername == null
-        && storedUsername == null
-        && storedPhone == null
-        && storedCity == null
-        && storedEmail == null
-        && storedLogin == null) { // if all are null
+        || storedLName == null
+        || storedUsername == null
+        || storedUsername == null
+        || storedPhone == null
+        || storedCity == null
+        || storedEmail == null
+        || storedLogin == null) { // if all are null
         $(`form`).validate({ // form validation
             rules: { // rules for inputs
                 fname: { // first name

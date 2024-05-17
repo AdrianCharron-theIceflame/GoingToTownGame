@@ -33,10 +33,20 @@
             <input type="number" name="numRounds" id="fldNumRounds" max="11" min="1" placeholder="1 to 11" value="1">
             <button id="btnStart">Start</button>
         </div>
-        <div id="finalResults"></div>
+        <div id="finalResults">
+            <section>
+                <h2>The game has ended:</h2>
+                <p id="p1"></p>
+                <p id="p2"></p>
+                <p id="p3"></p>
+                <button id="newGame">New Game</button>
+                <button id="leaveGame">Leave Game</button>
+            </section>
+        </div>
         <div id="dice">
             <section id="player">
                 <h2 id="playerName">Player</h2>
+                <p class="roundNumber"></p>
                 <div id="playerDiceArea">
                     <img src="./images/DiceSide1.png" alt="dice depicting a number from 1 to 6" id="playerDice1" class="dice1">
                     <img src="./images/DiceSide1.png" alt="dice depicting a number from 1 to 6" id="playerDice2" class="dice2">
@@ -51,6 +61,7 @@
             </div>
             <section id="bot">
                 <h2 id="botName">Adversary</h2>
+                <p class="roundNumber"></p>
                 <div id="botDiceArea">
                     <img src="./images/DiceSide1.png" alt="dice depicting a number from 1 to 6" id="botDice1" class="dice2">
                     <img src="./images/DiceSide1.png" alt="dice depicting a number from 1 to 6" id="botDice2" class="dice1">
