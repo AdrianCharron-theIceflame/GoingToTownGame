@@ -18,7 +18,6 @@ canvas {
 }
 
 div#imgTravel{
-    height: fit-content;
     text-align: left;
     overflow: hidden;
     margin: 0;
