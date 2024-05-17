@@ -25,7 +25,7 @@ $(function () {
      */
     function moveCycle(cycle) {
         if (leftPos <= maxWidth) {
-            leftPos += 5;
+            leftPos += 10;
             cycle.style.insetInlineStart = leftPos + `px`;
         }
     }
