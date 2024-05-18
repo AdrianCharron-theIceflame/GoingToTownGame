@@ -96,9 +96,9 @@ try {
             let adversRolls = DiceRolls.rollDice(num);
             if (num == 3) {
                 let diceImg = [];
-                if (rolls[0] > rolls[1] && rolls[0] > rolls[2]) {
+                if (rolls[0] >= rolls[1] && rolls[0] >= rolls[2]) {
                     diceImg.push(rolls[0]);
-                    if (rolls[1] > rolls[2]) {
+                    if (rolls[1] >= rolls[2]) {
                         diceImg.push(rolls[1]);
                         diceImg.push(rolls[2]);
                     }
@@ -108,9 +108,9 @@ try {
                     }
                 }
                 else
-                    if (rolls[1] > rolls[0] && rolls[1] > rolls[2]) {
+                    if (rolls[1] >= rolls[0] && rolls[1] >= rolls[2]) {
                         diceImg.push(rolls[1]);
-                        if (rolls[0] > rolls[2]) {
+                        if (rolls[0] >= rolls[2]) {
                             diceImg.push(rolls[0]);
                             diceImg.push(rolls[2]);
                         }
@@ -119,21 +119,22 @@ try {
                             diceImg.push(rolls[0]);
                         }
                     }
-                    else {
-                        diceImg.push(rolls[2]);
-                        if (rolls[0] > rolls[1]) {
-                            diceImg.push(rolls[0]);
-                            diceImg.push(rolls[1]);
+                    else
+                        if (rolls[2] >= rolls[0] && rolls[2] >= rolls[1]) {
+                            diceImg.push(rolls[2]);
+                            if (rolls[0] >= rolls[1]) {
+                                diceImg.push(rolls[0]);
+                                diceImg.push(rolls[1]);
+                            }
+                            else {
+                                diceImg.push(rolls[1]);
+                                diceImg.push(rolls[0]);
+                            }
                         }
-                        else {
-                            diceImg.push(rolls[1]);
-                            diceImg.push(rolls[0]);
-                        }
-                    }
                 let botDiceImg = [];
-                if (adversRolls[0] > adversRolls[1] && adversRolls[0] > adversRolls[2]) {
+                if (adversRolls[0] >= adversRolls[1] && adversRolls[0] >= adversRolls[2]) {
                     botDiceImg.push(adversRolls[0]);
-                    if (adversRolls[1] > adversRolls[2]) {
+                    if (adversRolls[1] >= adversRolls[2]) {
                         botDiceImg.push(adversRolls[1]);
                         botDiceImg.push(adversRolls[2]);
                     }
@@ -143,9 +144,9 @@ try {
                     }
                 }
                 else
-                    if (adversRolls[1] > adversRolls[0] && adversRolls[1] > adversRolls[2]) {
+                    if (adversRolls[1] >= adversRolls[0] && adversRolls[1] >= adversRolls[2]) {
                         botDiceImg.push(adversRolls[1]);
-                        if (adversRolls[0] > adversRolls[2]) {
+                        if (adversRolls[0] >= adversRolls[2]) {
                             botDiceImg.push(adversRolls[0]);
                             botDiceImg.push(adversRolls[2]);
                         }
@@ -154,17 +155,18 @@ try {
                             botDiceImg.push(adversRolls[0]);
                         }
                     }
-                    else {
-                        botDiceImg.push(adversRolls[2]);
-                        if (adversRolls[0] > adversRolls[1]) {
-                            botDiceImg.push(adversRolls[0]);
-                            botDiceImg.push(adversRolls[1]);
+                    else
+                        if (adversRolls[2] >= adversRolls[0] && adversRolls[2] >= adversRolls[1]) {
+                            botDiceImg.push(adversRolls[2]);
+                            if (adversRolls[0] >= adversRolls[1]) {
+                                botDiceImg.push(adversRolls[0]);
+                                botDiceImg.push(adversRolls[1]);
+                            }
+                            else {
+                                botDiceImg.push(adversRolls[1]);
+                                botDiceImg.push(adversRolls[0]);
+                            }
                         }
-                        else {
-                            botDiceImg.push(adversRolls[1]);
-                            botDiceImg.push(adversRolls[0]);
-                        }
-                    }
                 playerImg1.style.removeProperty(`animation`);
                 playerImg2.style.removeProperty(`animation`);
                 playerImg3.style.removeProperty(`animation`);
@@ -206,7 +208,7 @@ try {
             }
             if (num == 2) {
                 let diceImg = [];
-                if (rolls[0] > rolls[1]) {
+                if (rolls[0] >= rolls[1]) {
                     diceImg.push(rolls[0]);
                     diceImg.push(rolls[1]);
                 }
@@ -216,7 +218,7 @@ try {
 
                 }
                 let botDiceImg = [];
-                if (adversRolls[0] > adversRolls[1]) {
+                if (adversRolls[0] >= adversRolls[1]) {
                     botDiceImg.push(adversRolls[0]);
                     botDiceImg.push(adversRolls[1]);
                 }
