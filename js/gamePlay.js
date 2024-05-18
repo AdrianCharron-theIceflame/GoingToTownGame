@@ -7,7 +7,7 @@ try {
         $(`div#finalResults`).hide();
         // create user-player
         const userPlayer = new Player(localStorage.getItem(`fname`), localStorage.getItem(`lname`), localStorage.getItem(`username`), localStorage.getItem(`email`), localStorage.getItem(`phone`));
-        const adversary = new Player(`theAI`, `John`, `Jaix1`);
+        const adversary = new Player(`theAI`, `John`, `Adversary`);
         // display player's info
         try {
             displayInfo();
